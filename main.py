@@ -26,8 +26,12 @@ if __name__ == '__main__':
     tlds = ['com', 'net', 'co', 'mil', 'biz', 'info', 'name', 'mobi', 'pro', 'travel', 'museum', 'coop', 'aero', 'xxx', 'idv', 'int', 'jobs', 'post', 'rec']
     return random.choice(tlds)
 
-  fake_site = generate_fake_word()
-  version = generate_random_version()
-  domain = random_tld()
-  headers= {'User-Agent': f'{fake_site}/{version} (http://{fake_site}.{domain})'}
-  return headers
+  def get_fake_user_agent():
+    fake_site = generate_fake_word()
+    version = generate_random_version()
+    domain = random_tld()
+    return f'{fake_site}/{version} (http://{fake_site}.{domain})'
+  
+  headers = {}
+  headers = {'User-Agent': get_fake_user_agent()}
+  print(headers)
